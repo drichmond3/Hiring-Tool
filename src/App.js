@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from "./footer/Footer.js";
+import Header from "./header/Header.js";
+import PageContent from "./personality_quiz/ContentContainer.js";
+import questions from "./questions.json";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main>
+        <header>
+          <Header />
+        </header>
+        <section>
+          <article>
+            <PageContent questions={questions} />
+          </article>
+          <article>
+
+          </article>
+        </section>
+        <footer>
+          <Footer publishDate={new Date("2021-06-29")} />
+        </footer>
+      </main>
     </div>
   );
 }

@@ -1,0 +1,71 @@
+[
+  {
+    "category": "Skillset",
+    "prompt": "Select all that apply",
+    "type": "MULTISELECT",
+    "questions": [
+      {
+        "text": "Languages",
+        "options": [
+          "Java",
+          "NodeJS",
+          "Javascript",
+          "HTML5",
+          "CSS3",
+          "Maven",
+          "Jenkins",
+          "Git",
+          "Subversion"
+        ]
+      },
+      {
+        "text": "Frameworks",
+        "options": [
+          "Spring MVC",
+          "Hibernate",
+          "React",
+          "Express",
+          "Webpack"
+        ]
+      },
+      {
+        "text": "Database",
+        "options": [
+          "Relational Database",
+          "Object Oriented Database"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Personality",
+    "prompt": "Rank in order from most to least important",
+    "type": "RANKING",
+    "questions": [
+      {
+        "text": "Personality",
+        "options": [
+          "Leadership",
+          "Problemsolver",
+          "Team Player",
+          "Self-Starter"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Qualifications",
+    "prompt": "Select the option that is most important to you",
+    "type": "SINGLESELECT",
+    "questions": [
+      {
+        "text": "Qualifications",
+        "options": [
+          "Education",
+          "Experience",
+          "Exposure"
+        ]
+      }
+    ]
+  }
+]
