@@ -1,4 +1,5 @@
 import React from "react";
+import { Card } from "react-bootstrap";
 import { Page } from "./NavigationBar";
 import WelcomePage from "./page/WelcomePage";
 import QuizPage from "./page/Quiz/QuizPage";
@@ -7,12 +8,13 @@ import "./ContentContainer.css";
 
 export default function PageContainer(props) {
   let child = null;
+
   switch (props.activePage) {
     case Page.WELCOME:
       child = renderWelcomePage(props);
       break;
     case Page.QUIZ:
-      child = renderQuizPage(props);
+      child = renderQuizPage(props.test, props.setActivePage, props.setResults);
       break;
     case Page.RESULTS:
       child = renderResultsPage(props);
@@ -23,25 +25,34 @@ export default function PageContainer(props) {
       child = renderWelcomePage(props);
   }
   return (
-    <div className="page-container">
+    <Card className="page-container">
       {child}
-    </div>
+    </Card>
   );
 }
 
 const renderWelcomePage = (props) => {
-  console.log("Rendering welcome page");
   const nextPage = () => props.setActivePage(Page.QUIZ);
   return <WelcomePage nextPage={nextPage} />
 }
 
-const renderQuizPage = (props) => {
-  const previousPage = () => props.setActivePage(Page.WELCOME);
-  const nextPage = () => props.setActivePage(Page.RESULTS);
-  return <QuizPage previousPage={previousPage} nextPage={nextPage} questions={props.questions} />
+const renderQuizPage = (questionCategories, setActivePage, setResults) => {
+  let nextPage = (questionsAndAnswers) => {
+    setResults(questionsAndAnswers);
+    setActivePage(Page.RESULTS);
+  }
+  let previousPage = () => setActivePage(Page.WELCOME);
+
+  return <QuizPage
+    previousPage={previousPage}
+    nextPage={nextPage}
+    questionCategories={questionCategories}
+  />
 }
 
 const renderResultsPage = (props) => {
+  let answers = props.test;
+  console.log("Answers are ", answers);
   const nextPage = () => props.setActivePage(Page.QUIZ);
   return <ResultsPage nextPage={nextPage} />
 }

@@ -1,9 +1,11 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
 import Footer from "./footer/Footer.js";
 import Header from "./header/Header.js";
-import PageContent from "./personality_quiz/ContentContainer.js";
-import questions from "./questions.json";
+import ContentContainer from "./personality_quiz/ContentContainer.js";
+
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import test from "./questions.json";
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
         </header>
         <section>
           <article>
-            <PageContent questions={questions} />
+            <ContentContainer test={test} />
           </article>
           <article>
 

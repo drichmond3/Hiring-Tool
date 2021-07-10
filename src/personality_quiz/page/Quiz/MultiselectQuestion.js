@@ -3,27 +3,27 @@ import { Button } from "react-bootstrap";
 
 export default function MultiselectQuestion(props) {
   const { question, value: selectedValues, updateFunc } = props;
-  const toggle = (selectedIndex, optionText) => {
+  const toggle = (selectedIndex, option) => {
     let response = [...selectedValues];
 
     if (selectedIndex >= 0) {
       delete response[selectedIndex];
     } else {
-      response.push(optionText);
+      response.push(option);
     }
     updateFunc(response);
   }
-
+  let selectedKeys = selectedValues.map(obj => obj.key);
   return (
-    <div>
+    <div className="question">
       <p>{question.text}</p>
-      {question.options.map((optionText, optionKey) => {
-        let selectedIndex = selectedValues.indexOf(optionText);
+      {question.options.map((optionObj) => {
+        let selectedIndex = selectedKeys.indexOf(optionObj.key);
         return (
           <Option
-            key={optionKey}
-            text={optionText}
-            toggle={() => toggle(selectedIndex, optionText)}
+            key={optionObj.key}
+            text={optionObj.val}
+            toggle={() => toggle(selectedIndex, optionObj)}
             selected={selectedIndex >= 0} />
         );
       }
@@ -34,6 +34,6 @@ export default function MultiselectQuestion(props) {
 
 const Option = (props) => {
   return (
-    <Button variant={props.selected ? "primary" : "secondary"} onClick={props.toggle}>{props.text}</Button>
+    <Button variant={props.selected ? "secondary" : "light"} onClick={props.toggle}>{props.text}</Button>
   )
 }

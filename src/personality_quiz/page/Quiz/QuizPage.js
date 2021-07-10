@@ -1,27 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./QuizPage.css";
-import { Alert } from "react-bootstrap";
 import QuestionCategory from "./QuestionCategory";
 
 export default function QuizPage(props) {
-  let [questionCategoryId, setQuestionId] = useState(0);
+  let [questionCategories, setQuestionCategories] = useState(props.questionCategories);
+  let [questionCategoryId, setQuestionCategoryId] = useState(0);
+  useEffect(() => setQuestionCategories(props.questionCategories), [props.questionCategories]);
 
-  let questionCategory = props.questions[questionCategoryId];
-  return (
-    <div className="data-collection">
-      {renderQuestion(questionCategory.category, questionCategory.prompt, questionCategory.type, questionCategory.questions)}
-      <div> padding </div>
-    </div>
-  )
-}
+  let previousCategory = (categoryIndex, updatedQuestions) => {
+    saveQuestionCategory(categoryIndex, updatedQuestions);
+    if (questionCategoryId > 0) {
+      setQuestionCategoryId(questionCategoryId - 1);
+    }
+    else {
+      props.previousPage();
+    }
+  }
 
-const renderQuestion = (category, prompt, type, questions) => {
-  if (type === "MULTISELECT") {
+  let saveQuestionCategory = (categoryIndex, updatedQuestions) => {
+    let response = [...props.questionCategories];
+    let updatedCategory = { ...response[categoryIndex] };
+    updatedCategory.questions = updatedQuestions;
+    response[categoryIndex] = updatedCategory;
+    console.log(response);
+    setQuestionCategories(response);
+  }
+
+  let completeCategory = (categoryIndex, updatedQuestions) => {
+    let response = saveQuestionCategory(categoryIndex, updatedQuestions);
+    if (questionCategoryId >= questionCategories.length - 1) {
+      props.nextPage(response);
+    } else {
+      setQuestionCategoryId(questionCategoryId + 1);
+    }
+  }
+
+  if (questionCategoryId <= questionCategories.length) {
     return (
-      <QuestionCategory category={category} prompt={prompt} type={type} questions={questions} />
-    );
-  } else {
-    console.error(new Error("Unexpected Question type " + type));
-    return (<Alert variant="danger">Unexpected Error</Alert>)
+      <div className="data-collection">
+        <QuestionCategory
+          category={questionCategories[questionCategoryId].category}
+          prompt={questionCategories[questionCategoryId].prompt}
+          type={questionCategories[questionCategoryId].type}
+          questions={questionCategories[questionCategoryId].questions}
+          submit={(answers) => completeCategory(questionCategoryId, answers)}
+          back={(answers) => previousCategory(questionCategoryId, answers)} />
+        <div> </div> {/*todo add actual padding*/}
+      </div>
+    )
+  }
+  else {
+    console.error("Completed question categories. Id " + questionCategoryId + " is out of range.");
   }
 }

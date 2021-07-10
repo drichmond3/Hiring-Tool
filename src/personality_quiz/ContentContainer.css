@@ -9,6 +9,8 @@
 .content-container-wrapper{
   padding-top:80px;
   height:100vh;
+  padding-left:0px;
+  padding-right:0px;
 }
 
 .navigation-bar{
@@ -19,16 +21,18 @@
   flex: 1;
   border-bottom: 5px solid #DDDDDD;
   font-size: 1.1em;
+  transition: border-bottom 0.8s ease;
 }
 
 .navigation-bar nav.active{
   border-bottom: 5px solid green;
+  transition: border-bottom 0.8s ease;
 }
 
 .page-container{
   flex:1;
+  margin-bottom:4em;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom:50px;
 }

@@ -7,32 +7,80 @@
       {
         "text": "Languages",
         "options": [
-          "Java",
-          "NodeJS",
-          "Javascript",
-          "HTML5",
-          "CSS3",
-          "Maven",
-          "Jenkins",
-          "Git",
-          "Subversion"
+          {
+            "key": 0,
+            "val": "Java"
+          },
+          {
+            "key": 1,
+            "val": "NodeJS"
+          },
+          {
+            "key": 2,
+            "val": "Javascript"
+          },
+          {
+            "key": 3,
+            "val": "HTML5"
+          },
+          {
+            "key": 4,
+            "val": "CSS3"
+          },
+          {
+            "key": 5,
+            "val": "Maven"
+          },
+          {
+            "key": 6,
+            "val": "Jenkins"
+          },
+          {
+            "key": 7,
+            "val": "Git"
+          },
+          {
+            "key": 8,
+            "val": "Subversion"
+          }
         ]
       },
       {
         "text": "Frameworks",
         "options": [
-          "Spring MVC",
-          "Hibernate",
-          "React",
-          "Express",
-          "Webpack"
+          {
+            "key": 0,
+            "val": "Spring MVC"
+          },
+          {
+            "key": 1,
+            "val": "Hibernate"
+          },
+          {
+            "key": 2,
+            "val": "React"
+          },
+          {
+            "key": 3,
+            "val": "Express"
+          },
+          {
+            "key": 4,
+            "val": "Webpack"
+          }
         ]
       },
       {
         "text": "Database",
         "options": [
-          "Relational Database",
-          "Object Oriented Database"
+          {
+            "key": 0,
+            "val": "Relational Database"
+          },
+          {
+            "key": 1,
+            "val": "Object Oriented Database"
+          }
         ]
       }
     ]
@@ -45,10 +93,22 @@
       {
         "text": "Personality",
         "options": [
-          "Leadership",
-          "Problemsolver",
-          "Team Player",
-          "Self-Starter"
+          {
+            "key": 0,
+            "val": "Leadership"
+          },
+          {
+            "key": 1,
+            "val": "Problem Solver"
+          },
+          {
+            "key": 2,
+            "val": "Team Player"
+          },
+          {
+            "key": 3,
+            "val": "Self-Starter"
+          }
         ]
       }
     ]
@@ -61,9 +121,18 @@
       {
         "text": "Qualifications",
         "options": [
-          "Education",
-          "Experience",
-          "Exposure"
+          {
+            "key": 1,
+            "val": "Education"
+          },
+          {
+            "key": 2,
+            "val": "Experience"
+          },
+          {
+            "key": 3,
+            "val": "Exposure"
+          }
         ]
       }
     ]

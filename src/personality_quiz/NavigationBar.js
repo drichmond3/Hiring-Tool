@@ -4,9 +4,9 @@ import "./ContentContainer.css";
 export default function NavigationBar(props) {
   return (
     <div className="navigation-bar">
-      <nav className="active">Welcome</nav>
-      <nav>Quiz</nav>
-      <nav>Results</nav>
+      <nav className={props.activePage === Page.WELCOME ? "active" : ""}>Welcome</nav>
+      <nav className={props.activePage === Page.QUIZ ? "active" : ""}>Quiz</nav>
+      <nav className={props.activePage === Page.RESULTS ? "active" : ""}>Results</nav>
     </div>
   )
 }
