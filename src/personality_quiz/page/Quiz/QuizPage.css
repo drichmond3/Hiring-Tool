@@ -41,6 +41,8 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  position:relative;
+  z-index: 1;
 }
 
 .collection-sidebar.left{
@@ -92,6 +94,19 @@
   margin:auto;
 }
 
+.data-collection .carousel-inner {
+  width:auto;
+  height:100%;
+}
+
+.data-collection .carousel {
+  height:100%;
+}
+
+.data-collection .carousel-item{
+  height:100%;
+}
+
 .multiselect-question p {
   font-size: 1.4rem;
   border-bottom: 5px solid #555555;
@@ -106,6 +121,7 @@
   font-size:1em;
   width:50%;
   margin:auto;
+  user-select:none;
 }
 
 @media only screen and (max-width: 768px) {

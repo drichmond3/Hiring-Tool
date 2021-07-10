@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Alert, Card } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronCircleLeft, faChevronCircleRight } from "@fortawesome/free-solid-svg-icons";
-
+import React from "react";
+import { Alert } from "react-bootstrap";
 import MultiselectQuestion from "./MultiselectQuestion";
 import RankQuestion from "./RankQuestion";
 import SingleSelectQuestion from "./SingleSelectQuestion";
 
 export default function QuestionCategory(props) {
-  let [questions, setQuestions] = useState(props.questions);
-  useEffect(() => setQuestions(props.questions), [props.questions]);
 
-  const { category, prompt, type, submit, back } = props;
+  const { questions, type } = props;
   const updateQuestionAnswer = (questionIndex, value) => {
     let newQuestionVal = {
       ...questions[questionIndex],
@@ -19,58 +14,41 @@ export default function QuestionCategory(props) {
     };
     let newVal = [...questions];
     newVal[questionIndex] = newQuestionVal;
-    setQuestions(newVal);
+    props.setAnswers(newVal);
   }
-
-  return (
-    <>
-      <Card.Header>
-        <h3>{category}</h3>
-        <p>{prompt}</p>
-      </Card.Header>
-      <Card.Body className="collection-category-height">
-        <div className="collection-sidebar left">
-          <FontAwesomeIcon icon={faChevronCircleLeft} size="3x" className="collection-sidebar-navButton" onClick={() => back(questions)} />
-        </div>
-        <div className="collection-sidebar right">
-          <FontAwesomeIcon icon={faChevronCircleRight} size="3x" className="collection-sidebar-navButton" onClick={() => submit(questions)} />
-        </div>
-        <div className="collection-category">
-          {renderQuestions(type, questions, updateQuestionAnswer)}
-        </div>
-      </Card.Body>
-    </>
-  )
-}
-
-
-const renderQuestions = (type, questions, updateFunc) => {
+  let carouselItemClass = props.active ? "carousel-item active" : "carousel-item";
   switch (type) {
     case "MULTISELECT":
       return (
-        <>
-          {questions.map((question, index) => {
-            return <MultiselectQuestion key={index} question={question} updateFunc={(val) => updateFunc(index, val)} />
-          }
-          )}
-        </>
+        <div className={carouselItemClass}>
+          <div className="collection-category">
+            {questions.map((question, index) => {
+              return <MultiselectQuestion key={index} question={question} updateFunc={(val) => updateQuestionAnswer(index, val)} />
+            }
+            )}
+          </div>
+        </div>
       );
     case "RANKING":
       return (
-        <>
-          {questions.map((question, index) => {
-            return <RankQuestion key={index} uniqueId={index} question={question} updateFunc={(val) => updateFunc(index, val)} />
-          }
-          )}
-        </>
+        <div className={carouselItemClass}>
+          <div className="collection-category">
+            {questions.map((question, index) => {
+              return <RankQuestion key={index} uniqueId={index} question={question} updateFunc={(val) => updateQuestionAnswer(index, val)} />
+            }
+            )}
+          </div>
+        </div>
       )
     case "SINGLESELECT":
       return (
-        <>
-          {questions.map((question, index) => {
-            return <SingleSelectQuestion key={index} uniqueId={index} question={question} updateFunc={(val) => updateFunc(index, val)} />
-          })}
-        </>
+        <div className={carouselItemClass}>
+          <div className="collection-category">
+            {questions.map((question, index) => {
+              return <SingleSelectQuestion key={index} uniqueId={index} question={question} updateFunc={(val) => updateQuestionAnswer(index, val)} />
+            })}
+          </div>
+        </div>
       )
     default:
       console.error(new Error("Unexpected Question type " + type));

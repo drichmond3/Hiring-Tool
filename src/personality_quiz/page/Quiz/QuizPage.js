@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Card } from "react-bootstrap";
 import "./QuizPage.css";
 import QuestionCategory from "./QuestionCategory";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronCircleLeft, faChevronCircleRight } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function QuizPage(props) {
   let [questionCategories, setQuestionCategories] = useState(props.questionCategories);
@@ -37,13 +41,31 @@ export default function QuizPage(props) {
   if (questionCategoryId <= questionCategories.length) {
     return (
       <div className="data-collection">
-        <QuestionCategory
-          category={questionCategories[questionCategoryId].category}
-          prompt={questionCategories[questionCategoryId].prompt}
-          type={questionCategories[questionCategoryId].type}
-          questions={questionCategories[questionCategoryId].questions}
-          submit={(answers) => completeCategory(questionCategoryId, answers)}
-          back={(answers) => previousCategory(questionCategoryId, answers)} />
+        <Card.Header>
+          <h3>{questionCategories[questionCategoryId].category}</h3>
+          <p>{questionCategories[questionCategoryId].prompt}</p>
+        </Card.Header>
+        <Card.Body className="collection-category-height">
+          <div className="collection-sidebar left">
+            <FontAwesomeIcon icon={faChevronCircleLeft} size="3x" className="collection-sidebar-navButton" onClick={() => previousCategory()} />
+          </div>
+          <div className="collection-sidebar right">
+            <FontAwesomeIcon icon={faChevronCircleRight} size="3x" className="collection-sidebar-navButton" onClick={() => completeCategory()} />
+          </div>
+          <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+
+              {questionCategories.map((category, catIndex) => {
+                return (<QuestionCategory
+                  active={catIndex === questionCategoryId}
+                  type={category.type}
+                  questions={category.questions}
+                  setAnswers={(answers) => saveQuestionCategory(catIndex, answers)} />)
+              })}
+            </div>
+          </div>
+
+        </Card.Body>
         <div> </div>
       </div>
     )
