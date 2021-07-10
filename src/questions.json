@@ -95,19 +95,23 @@
         "options": [
           {
             "key": 0,
-            "val": "Leadership"
+            "val": "Leadership",
+            "description": "Leadership is taking initiative and following the path less traveled. “A great leader takes people where they don’t necessarily want to go, but ought to be.” —Rosalynn Carter (GoodReads.com). Leadership defines greatness simply by definition"
           },
           {
             "key": 1,
-            "val": "Problem Solver"
+            "val": "Problem Solving",
+            "description": "Defining a problem; determining the cause of the problem; identifying, prioritizing, and selecting alternatives for a solution; and implementing a solution."
           },
           {
             "key": 2,
-            "val": "Team Player"
+            "val": "Team Player",
+            "description": "A team player is someone who actively contributes to their group in order to complete tasks, meet goals or manage projects. Team players actively listen to their coworkers, respect ideas and aim to improve the product or process at hand. -Indeed.com"
           },
           {
             "key": 3,
-            "val": "Self-Starter"
+            "val": "Adaptability",
+            "description": "Willing to put in extra work on their own to learn new and useful skills to support the team. Continuous improvement ensures an engineer's skillset will always stay relevant."
           }
         ]
       }
@@ -123,15 +127,18 @@
         "options": [
           {
             "key": 1,
-            "val": "Education"
+            "val": "Education",
+            "description": "Ensures an applicant has a thorough understanding of the theoretical knowledge necessary to apply computer science principles to build high quality software."
           },
           {
             "key": 2,
-            "val": "Experience"
+            "val": "Experience",
+            "description": "Empowers an applicant by giving them the necessary time to grow and perfect their skills, growing their confidence and capabilities."
           },
           {
             "key": 3,
-            "val": "Exposure"
+            "val": "Exposure",
+            "description": "Allows an applicant familiarize themselves with the advantages and disadvantages of a varienty of approaches to a problem. This way they can accurately choose the tools and techniques best suited to each situation."
           }
         ]
       }

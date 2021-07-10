@@ -18,11 +18,10 @@ export default function QuizPage(props) {
   }
 
   let saveQuestionCategory = (categoryIndex, updatedQuestions) => {
-    let response = [...props.questionCategories];
+    let response = [...questionCategories];
     let updatedCategory = { ...response[categoryIndex] };
     updatedCategory.questions = updatedQuestions;
     response[categoryIndex] = updatedCategory;
-    console.log(response);
     setQuestionCategories(response);
   }
 
@@ -45,7 +44,7 @@ export default function QuizPage(props) {
           questions={questionCategories[questionCategoryId].questions}
           submit={(answers) => completeCategory(questionCategoryId, answers)}
           back={(answers) => previousCategory(questionCategoryId, answers)} />
-        <div> </div> {/*todo add actual padding*/}
+        <div> </div>
       </div>
     )
   }

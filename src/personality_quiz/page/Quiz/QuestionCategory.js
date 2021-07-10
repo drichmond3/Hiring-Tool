@@ -8,8 +8,8 @@ import RankQuestion from "./RankQuestion";
 import SingleSelectQuestion from "./SingleSelectQuestion";
 
 export default function QuestionCategory(props) {
-  let [questions, setQuestions] = useState(props.questions.map((question) => ({ question: question, value: [] })));
-  useEffect(() => setQuestions(props.questions.map((question) => ({ question: question, value: [] }))), [props.questions]);
+  let [questions, setQuestions] = useState(props.questions);
+  useEffect(() => setQuestions(props.questions), [props.questions]);
 
   const { category, prompt, type, submit, back } = props;
   const updateQuestionAnswer = (questionIndex, value) => {
@@ -50,7 +50,7 @@ const renderQuestions = (type, questions, updateFunc) => {
       return (
         <>
           {questions.map((question, index) => {
-            return <MultiselectQuestion key={index} question={question.question} value={question.value} updateFunc={(val) => updateFunc(index, val)} />
+            return <MultiselectQuestion key={index} question={question} updateFunc={(val) => updateFunc(index, val)} />
           }
           )}
         </>
@@ -59,8 +59,7 @@ const renderQuestions = (type, questions, updateFunc) => {
       return (
         <>
           {questions.map((question, index) => {
-            let value = (question.value && question.value.length) ? [...question.value] : [...question.question.options];
-            return <RankQuestion key={index} uniqueId={index} question={question.question} value={value} updateFunc={(val) => updateFunc(index, val)} />
+            return <RankQuestion key={index} uniqueId={index} question={question} updateFunc={(val) => updateFunc(index, val)} />
           }
           )}
         </>
@@ -69,7 +68,7 @@ const renderQuestions = (type, questions, updateFunc) => {
       return (
         <>
           {questions.map((question, index) => {
-            return <SingleSelectQuestion key={index} uniqueId={index} question={question.question} value={question.value} updateFunc={(val) => updateFunc(index, val)} />
+            return <SingleSelectQuestion key={index} uniqueId={index} question={question} updateFunc={(val) => updateFunc(index, val)} />
           })}
         </>
       )

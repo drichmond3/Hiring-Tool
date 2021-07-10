@@ -2,12 +2,13 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 export default function MultiselectQuestion(props) {
-  const { question, value: selectedValues, updateFunc } = props;
+  const { question, updateFunc } = props;
+  const selectedValues = question.value || [];
   const toggle = (selectedIndex, option) => {
     let response = [...selectedValues];
 
     if (selectedIndex >= 0) {
-      delete response[selectedIndex];
+      response.splice(selectedIndex, 1);
     } else {
       response.push(option);
     }
@@ -15,7 +16,7 @@ export default function MultiselectQuestion(props) {
   }
   let selectedKeys = selectedValues.map(obj => obj.key);
   return (
-    <div className="question">
+    <div className="multiselect-question">
       <p>{question.text}</p>
       {question.options.map((optionObj) => {
         let selectedIndex = selectedKeys.indexOf(optionObj.key);

@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 
 export default function RankQuestion(props) {
-  const { uniqueId, value: orderedValues, updateFunc } = props;
-
+  const { uniqueId, updateFunc } = props;
+  let orderedValues = (props.question.value && props.question.value.length) ? [...props.question.value] : [...props.question.options];
   const updateOrder = (dragData) => {
     const dest = dragData.destination.index;
     const start = dragData.source.index;
@@ -29,9 +29,14 @@ export default function RankQuestion(props) {
                     <li {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                       <Card className="rank_content">
                         <div>
-                          <FontAwesomeIcon icon={faEllipsisV} className={"rank_icon"} />
-                          <FontAwesomeIcon icon={faEllipsisV} className={"rank_icon"} />
-                          <span>{optionObj.val}</span>
+                          <Card.Header>
+                            <div className={"rank_icon"}>
+                              <FontAwesomeIcon icon={faEllipsisV} />
+                              <FontAwesomeIcon icon={faEllipsisV} />
+                            </div>
+                            {optionObj.val}
+                          </Card.Header>
+                          <Card.Body>{optionObj.description}</Card.Body>
                         </div>
                       </Card>
                     </li>

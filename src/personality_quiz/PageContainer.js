@@ -38,6 +38,7 @@ const renderWelcomePage = (props) => {
 
 const renderQuizPage = (questionCategories, setActivePage, setResults) => {
   let nextPage = (questionsAndAnswers) => {
+    console.log("results are ", questionsAndAnswers);
     setResults(questionsAndAnswers);
     setActivePage(Page.RESULTS);
   }
