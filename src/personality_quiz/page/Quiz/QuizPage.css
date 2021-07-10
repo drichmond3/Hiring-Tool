@@ -107,6 +107,16 @@
   height:100%;
 }
 
+.carousel.carousel-fade .carousel-item {
+  display: block;
+  opacity: 0;
+  transition: opacity ease-out .4s;
+}
+
+.carousel.carousel-fade .carousel-item.active {
+  opacity: 1 !important;
+}
+
 .multiselect-question p {
   font-size: 1.4rem;
   border-bottom: 5px solid #555555;
@@ -141,7 +151,7 @@
 }
 
 .option-card{
-  width: 23rem;
+  width: 24rem;
   cursor:pointer;
   position:relative;
   top:0em;
@@ -173,6 +183,10 @@
 
 .option-card:hover{
   z-index:1;
+}
+
+.single-select-option-wrapper{
+  margin-left: -8rem; /* option-card:width/3 */
 }
 
 .single-select-option-column{

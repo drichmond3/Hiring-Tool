@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Carousel } from "react-bootstrap";
 import "./QuizPage.css";
 import QuestionCategory from "./QuestionCategory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -52,22 +52,23 @@ export default function QuizPage(props) {
           <div className="collection-sidebar right">
             <FontAwesomeIcon icon={faChevronCircleRight} size="3x" className="collection-sidebar-navButton" onClick={() => completeCategory()} />
           </div>
-          <div class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-
-              {questionCategories.map((category, catIndex) => {
-                return (<QuestionCategory
-                  active={catIndex === questionCategoryId}
-                  type={category.type}
-                  questions={category.questions}
-                  setAnswers={(answers) => saveQuestionCategory(catIndex, answers)} />)
-              })}
-            </div>
-          </div>
-
+          <Carousel className={"carousel-fade"} indicators={false} controls={false} activeIndex={questionCategoryId}>
+            {questionCategories.map((category, catIndex) => {
+              return (
+                <Carousel.Item>
+                  <QuestionCategory
+                    active={catIndex === questionCategoryId}
+                    key={catIndex}
+                    type={category.type}
+                    questions={category.questions}
+                    setAnswers={(answers) => saveQuestionCategory(catIndex, answers)} />
+                </Carousel.Item>
+              )
+            })}
+          </Carousel>
         </Card.Body>
         <div> </div>
-      </div>
+      </div >
     )
   }
   else {

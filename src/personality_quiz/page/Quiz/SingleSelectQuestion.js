@@ -18,7 +18,7 @@ export default function SingleSelectQuestion(props) {
   const DESELECTED_CLASS = "bg-light option-card single-select-option";
   const selectedValue = (selectedOption && selectedOption[0] && selectedOption[0].val);
   return (
-    <div>
+    <div className="single-select-option-wrapper">
       {question.options.map((option, index) => {
         let cardClass = (option.val === selectedValue) ? SELECTED_CLASS : DESELECTED_CLASS;
         cardClass += ((option.val === selectedValue) ? " selected text-primary" : "");
