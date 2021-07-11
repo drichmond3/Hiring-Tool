@@ -128,17 +128,26 @@
           {
             "key": 1,
             "val": "Education",
-            "description": "Ensures an applicant has a thorough understanding of the theoretical knowledge necessary to apply computer science principles to build high quality software."
+            "description": "Ensures an applicant has a thorough understanding of the theoretical knowledge necessary to apply computer science principles to build high quality software.",
+            "tagline": "Knowledge is Power",
+            "icon": "fa-glasses",
+            "background": "/graduation_background_light.PNG"
           },
           {
             "key": 2,
             "val": "Experience",
-            "description": "Empowers an applicant by giving them the necessary time to grow and perfect their skills, growing their confidence and capabilities."
+            "description": "Empowers an applicant by giving them the necessary time to grow and perfect their skills, growing their confidence and capabilities.",
+            "tagline": "Master Your Trade",
+            "icon": "fa-hard-hat",
+            "background": "/experience_background_light.PNG"
           },
           {
             "key": 3,
             "val": "Exposure",
-            "description": "Allows an applicant familiarize themselves with the advantages and disadvantages of a varienty of approaches to a problem. This way they can accurately choose the tools and techniques best suited to each situation."
+            "description": "Allows an applicant familiarize themselves with the advantages and disadvantages of a varienty of approaches to a problem. This way they can accurately choose the tools and techniques best suited to each situation.",
+            "tagline": "Tools for Success",
+            "icon": "fa-book",
+            "background": "/exposure_background_light.PNG"
           }
         ]
       }

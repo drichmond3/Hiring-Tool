@@ -150,7 +150,7 @@
   text-align:center
 }
 
-.option-card{
+.card-selection-option{
   width: 24rem;
   cursor:pointer;
   position:relative;
@@ -158,38 +158,38 @@
   transition: all 0.3s ease-in-out;
 }
 
-.single-select-option-column.top-1{
+.card-selection-column.top-1{
   top: 3em;
 }
 
-.single-select-option-column.top-2{
+.card-selection-column.top-2{
   top: 6em;
 }
 
-.single-select-option-column.top-3{
+.card-selection-column.top-3{
   top: 9em;
 }
 
-.single-select-option-column.top-4{
+.card-selection-column.top-4{
   top: 12em;
 }
 
-.option-card.selected{
+.card-selection-option.selected{
   transition: all 0.3s ease-in-out;
   top: -1em;
   border-width: 2px;
   z-index:1;
 }
 
-.option-card:hover{
+.card-selection-option:hover{
   z-index:1;
 }
 
-.single-select-option-wrapper{
-  margin-left: -8rem; /* option-card:width/3 */
+.card-selection-option-wrapper{
+  margin-left: -8rem; /* card-selection-option:width/3 */
 }
 
-.single-select-option-column{
+.card-selection-column{
   position:relative;
   display:inline-block;
   width:15rem;
@@ -197,5 +197,39 @@
   padding:0px;
   overflow:visible;
   user-select:none;
+}
 
+.single-select-options-container{
+  display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.single-select-option-column{
+  flex: 1;
+  height:100%;
+}
+
+.single-select-option-column .card{
+  height:100%;
+  cursor:pointer;
+}
+
+.single-select-option-column .card-body{
+  overflow:auto;
+  padding-bottom:0px;
+}
+
+.single-select-option-column .card .list-group{
+  border-bottom:none;
+}
+
+.single-selection-option-body{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.single-selection-option-body :last-child{
+  flex: 1;
 }
