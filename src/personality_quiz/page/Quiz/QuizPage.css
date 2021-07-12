@@ -26,13 +26,16 @@
   margin-bottom:50px;
   overflow-y: auto;
   overflow-x: hidden;
-  justify-content:center;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
 
 .collection-category::-webkit-scrollbar {
   display: none;
+}
+
+.collection-category > *{
+  margin: auto;
 }
 
 

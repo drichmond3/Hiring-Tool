@@ -8,7 +8,7 @@
 
 .content-container-wrapper{
   padding-top:80px;
-  height:100vh;
+  min-height:100vh;
   padding-left:0px;
   padding-right:0px;
 }

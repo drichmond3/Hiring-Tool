@@ -11,8 +11,7 @@ export default function QuizPage(props) {
   let [questionCategoryId, setQuestionCategoryId] = useState(0);
   useEffect(() => setQuestionCategories(props.questionCategories), [props.questionCategories]);
 
-  let previousCategory = (categoryIndex, updatedQuestions) => {
-    saveQuestionCategory(categoryIndex, updatedQuestions);
+  let previousCategory = () => {
     if (questionCategoryId > 0) {
       setQuestionCategoryId(questionCategoryId - 1);
     }
@@ -29,10 +28,9 @@ export default function QuizPage(props) {
     setQuestionCategories(response);
   }
 
-  let completeCategory = (categoryIndex, updatedQuestions) => {
-    let response = saveQuestionCategory(categoryIndex, updatedQuestions);
+  let completeCategory = () => {
     if (questionCategoryId >= questionCategories.length - 1) {
-      props.nextPage(response);
+      props.nextPage(questionCategories);
     } else {
       setQuestionCategoryId(questionCategoryId + 1);
     }

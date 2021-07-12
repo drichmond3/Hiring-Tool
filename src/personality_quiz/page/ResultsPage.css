@@ -10,3 +10,9 @@
 .result-icon{
   position:relative;
 }
+
+.result-page{
+  width:800px;
+  max-width:100%;
+  margin: auto;
+}
