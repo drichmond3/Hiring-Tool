@@ -110,14 +110,18 @@
   height:100%;
 }
 
-.carousel.carousel-fade .carousel-item {
-  display: block;
+.carousel.collection-carousel-fade .carousel-item {
+  display:block;
+  visibility:hidden;
   opacity: 0;
-  transition: opacity ease-out .4s;
 }
 
-.carousel.carousel-fade .carousel-item.active {
+.carousel.collection-carousel-fade .carousel-item.active {
+  display: block;
+  visibility:visible;
   opacity: 1 !important;
+  transition: opacity ease-out .4s;
+  transition: visibility ease-out 1;
 }
 
 .multiselect-question p {

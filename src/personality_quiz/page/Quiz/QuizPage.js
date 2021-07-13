@@ -50,13 +50,12 @@ export default function QuizPage(props) {
           <div className="collection-sidebar right">
             <FontAwesomeIcon icon={faChevronCircleRight} size="3x" className="collection-sidebar-navButton" onClick={() => completeCategory()} />
           </div>
-          <Carousel className={"carousel-fade"} indicators={false} controls={false} activeIndex={questionCategoryId}>
+          <Carousel className={"collection-carousel-fade"} indicators={false} slide={false} controls={false} activeIndex={questionCategoryId}>
             {questionCategories.map((category, catIndex) => {
               return (
-                <Carousel.Item>
+                <Carousel.Item key={catIndex}>
                   <QuestionCategory
                     active={catIndex === questionCategoryId}
-                    key={catIndex}
                     type={category.type}
                     questions={category.questions}
                     setAnswers={(answers) => saveQuestionCategory(catIndex, answers)} />
