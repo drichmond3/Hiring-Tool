@@ -1,7 +1,6 @@
-This project is a static javascript webpage with a modern responsive design to display a personality quiz optimized for search engines using HTML5.
+This project is a static javascript webpage with a modern responsive design to display a web developer hiring tool.
 
 Technologies used:
-- React
 - Javascript
-- HTML5
-- Webpack
+- React
+- HTML5/CSS3
